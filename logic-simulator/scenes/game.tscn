@@ -1,0 +1,150 @@
+[gd_scene load_steps=24 format=3 uid="uid://bi18rmle0amal"]
+
+[ext_resource type="Script" path="res://scripts/camera.gd" id="1_3xqhe"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_rfsat"]
+[ext_resource type="PackedScene" uid="uid://y382oboyoo76" path="res://scenes/grid.tscn" id="2_md734"]
+[ext_resource type="PackedScene" uid="uid://knolavudx3n6" path="res://scenes/hud.tscn" id="3_1ut8e"]
+[ext_resource type="Script" path="res://scripts/placer.gd" id="5_b446c"]
+[ext_resource type="Texture2D" uid="uid://j0d8b5yy2cdm" path="res://sprites/empty.png" id="5_cciae"]
+[ext_resource type="Texture2D" uid="uid://4hxc77sjmati" path="res://sprites/not_gate_tile.png" id="6_xr4yf"]
+[ext_resource type="Texture2D" uid="uid://vv3h3cftdway" path="res://sprites/and_gate_tile.png" id="7_ptr2q"]
+[ext_resource type="Texture2D" uid="uid://cc06m37jw8nkq" path="res://sprites/nand_gate_tile.png" id="8_for0o"]
+[ext_resource type="Texture2D" uid="uid://gtt1wa2i8fwn" path="res://sprites/or_gate_tile.png" id="9_sbq4d"]
+[ext_resource type="Texture2D" uid="uid://cbq3llobox5mk" path="res://sprites/nor_gate_tile.png" id="10_0pkfj"]
+[ext_resource type="Texture2D" uid="uid://sjnsk0o6mb3v" path="res://sprites/xor_gate_tile.png" id="11_ulla0"]
+[ext_resource type="Texture2D" uid="uid://2kp04yxrsflh" path="res://sprites/xnor_gate_tile.png" id="12_k4m2l"]
+[ext_resource type="PackedScene" uid="uid://dohios7xi84iy" path="res://scenes/wires.tscn" id="14_rfkjn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r2tdd"]
+texture = ExtResource("5_cciae")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/custom_data_0 = "Empty"
+1:0/0 = 0
+1:0/0/custom_data_0 = "Empty"
+0:1/0 = 0
+0:1/0/custom_data_0 = "Empty"
+1:1/0 = 0
+1:1/0/custom_data_0 = "Empty"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u4asr"]
+texture = ExtResource("6_xr4yf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/custom_data_0 = "not_gate"
+1:0/0 = 0
+1:0/0/custom_data_0 = "not_gate"
+0:1/0 = 0
+0:1/0/custom_data_0 = "not_gate"
+1:1/0 = 0
+1:1/0/custom_data_0 = "not_gate"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l3hs2"]
+texture = ExtResource("7_ptr2q")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/custom_data_0 = "and_gate"
+1:0/0 = 0
+1:0/0/custom_data_0 = "and_gate"
+0:1/0 = 0
+0:1/0/custom_data_0 = "and_gate"
+1:1/0 = 0
+1:1/0/custom_data_0 = "and_gate"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gq0bl"]
+texture = ExtResource("8_for0o")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/custom_data_0 = "nand_gate"
+1:0/0 = 0
+1:0/0/custom_data_0 = "nand_gate"
+0:1/0 = 0
+0:1/0/custom_data_0 = "nand_gate"
+1:1/0 = 0
+1:1/0/custom_data_0 = "nand_gate"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ip67"]
+texture = ExtResource("9_sbq4d")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/custom_data_0 = "or_gate"
+1:0/0 = 0
+1:0/0/custom_data_0 = "or_gate"
+0:1/0 = 0
+0:1/0/custom_data_0 = "or_gate"
+1:1/0 = 0
+1:1/0/custom_data_0 = "or_gate"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_72pyj"]
+texture = ExtResource("10_0pkfj")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/custom_data_0 = "nor_gate"
+1:0/0 = 0
+1:0/0/custom_data_0 = "nor_gate"
+0:1/0 = 0
+0:1/0/custom_data_0 = "nor_gate"
+1:1/0 = 0
+1:1/0/custom_data_0 = "nor_gate"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0scla"]
+texture = ExtResource("11_ulla0")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/custom_data_0 = "xor_gate"
+1:0/0 = 0
+1:0/0/custom_data_0 = "xor_gate"
+0:1/0 = 0
+0:1/0/custom_data_0 = "xor_gate"
+1:1/0 = 0
+1:1/0/custom_data_0 = "xor_gate"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dqll4"]
+texture = ExtResource("12_k4m2l")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/custom_data_0 = "xnor_gate"
+1:0/0 = 0
+1:0/0/custom_data_0 = "xnor_gate"
+0:1/0 = 0
+0:1/0/custom_data_0 = "xnor_gate"
+1:1/0 = 0
+1:1/0/custom_data_0 = "xnor_gate"
+
+[sub_resource type="TileSet" id="TileSet_rrn2t"]
+tile_size = Vector2i(32, 32)
+custom_data_layer_0/name = "Name"
+custom_data_layer_0/type = 4
+sources/1 = SubResource("TileSetAtlasSource_u4asr")
+sources/2 = SubResource("TileSetAtlasSource_l3hs2")
+sources/3 = SubResource("TileSetAtlasSource_gq0bl")
+sources/4 = SubResource("TileSetAtlasSource_2ip67")
+sources/5 = SubResource("TileSetAtlasSource_72pyj")
+sources/6 = SubResource("TileSetAtlasSource_0scla")
+sources/7 = SubResource("TileSetAtlasSource_dqll4")
+sources/0 = SubResource("TileSetAtlasSource_r2tdd")
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_rfsat")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -16384
+limit_top = -16384
+limit_right = 16384
+limit_bottom = 16384
+script = ExtResource("1_3xqhe")
+
+[node name="Grid" parent="." instance=ExtResource("2_md734")]
+z_index = 1
+
+[node name="HUD" parent="." instance=ExtResource("3_1ut8e")]
+
+[node name="Placer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_rrn2t")
+script = ExtResource("5_b446c")
+
+[node name="Wires" parent="." instance=ExtResource("14_rfkjn")]
+
+[connection signal="mode" from="." to="." method="_on_mode_change"]
+[connection signal="changeDic" from="Placer" to="Placer" method="_on_change_dic"]
